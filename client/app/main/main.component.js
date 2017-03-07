@@ -34,14 +34,6 @@ export class MainController {
               pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
               valueDecimals: 2
           },
-chart:{
-  events: {
-    load: function(){
-      var chart=this;
-      setTimeout(function(){chart.reflow()},100)
-    }
-  }
-},
           series: []
       };
 
@@ -70,7 +62,7 @@ chart:{
 
     this.$http.get('/api/symbols')
       .then(symbols => {
-        console.log("symbols", symbols);
+        //console.log("symbols", symbols);
         this.symbols = symbols.data;
         // fill highchart data
         this.names = this.symbols.map(function(symbol){
@@ -119,7 +111,7 @@ chart:{
             // fill data array
             // reformat data
             
-            console.log("hist",historicaldata);
+            //console.log("hist",historicaldata);
             var collectData={};
             historicaldata.data.query.results.quote.forEach(function(data){
               // if object dont exist.. create/initialize as empty array
@@ -135,7 +127,7 @@ chart:{
             });
 
             // create/display chart
-            console.log(seriesOptions);
+            //console.log(seriesOptions);
 
             //this.createChart(seriesOptions);
             this.chartConfig.series= seriesOptions;
